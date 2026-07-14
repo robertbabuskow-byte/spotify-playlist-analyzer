@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spotify Playlist Analyzer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">SPOTIFY PLAYLIST ANALYZER</p>
+        <h1>Turn a playlist into a musical profile.</h1>
+        <p class="lede">Analyze artists, albums, eras, duration, explicit content, repeat patterns, release cadence, and playlist evolution using Spotify's Web API.</p>
+      </div>
+      <button id="logoutBtn" class="secondary hidden">Log out</button>
+    </header>
+
+    <section class="panel" id="setupPanel">
+      <h2>1. Connect Spotify</h2>
+      <p>Create a Spotify developer app, add the redirect URI shown below, and paste the app's Client ID. Your Client ID is saved only in this browser.</p>
+      <label>Redirect URI
+        <div class="copy-row"><input id="redirectUri" readonly /><button id="copyRedirect" class="secondary">Copy</button></div>
+      </label>
+      <label>Spotify Client ID
+        <input id="clientId" placeholder="Paste your Client ID" autocomplete="off" />
+      </label>
+      <button id="loginBtn">Connect Spotify</button>
+      <p class="fine">Uses Authorization Code with PKCE. No client secret is placed in the browser.</p>
+    </section>
+
+    <section class="panel hidden" id="analyzePanel">
+      <h2>2. Analyze a playlist</h2>
+      <label>Playlist URL, URI, or ID
+        <input id="playlistInput" placeholder="https://open.spotify.com/playlist/..." />
+      </label>
+      <div class="actions">
+        <button id="analyzeBtn">Analyze playlist</button>
+        <button id="demoBtn" class="secondary">Load demo report</button>
+      </div>
+      <div id="status" class="status" aria-live="polite"></div>
+    </section>
+
+    <section id="report" class="hidden"></section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
